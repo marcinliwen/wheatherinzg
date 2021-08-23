@@ -11,7 +11,7 @@ const weatherApi ={
   icon: "http://openweathermap.org/img/wn/"
 }
 
-const airConditionApi = "http://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/387";
+const airConditionApi = "https://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/387";
 
 
 function App() {
