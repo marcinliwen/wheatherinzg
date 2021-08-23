@@ -171,7 +171,9 @@ function App() {
               <div className="date-now">{dateBuilder(new Date())}</div>
             </div>
           </div>
+          {(typeof airCondition.data != "undefined") ?
           <div className="air-condition"><span>jakość powietrza:</span> <span className={`air-quantity ${airCondition.data.aqi < 50 ?'good' : 'bad'}`}>{airCondition.data.aqi < 50 ?'Bardzo dobra' : 'Zła'}</span></div>
+          :""}
           <div>
             <div className="weather-box">
               <div className="weather-temp"> {Math.round(weather[0].main.temp)}°C</div>
@@ -196,6 +198,9 @@ function App() {
               <div className="date-now">{dateBuilder(new Date())}</div>
             </div>
           </div>
+          {(typeof airCondition.data != "undefined") ?
+          <div className="air-condition"><span>jakość powietrza:</span> <span className={`air-quantity ${airCondition.data.aqi < 50 ?'good' : 'bad'}`}>{airCondition.data.aqi < 50 ?'Bardzo dobra' : 'Zła'}</span></div>
+          :""}
           <div>
             <div className="weather-box">
               <div className="weather-temp">{Math.round(weather[1].temperatura)}°C</div>
