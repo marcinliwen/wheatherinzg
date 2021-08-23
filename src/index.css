@@ -1,8 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;700;900&display=swap');
+*{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  padding:0;
+  box-sizing: border-box;
+
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +17,141 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.app {
+  background-image: url('./images/sunny.jpg');
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s ease;
+}
+.app.cloudy{
+  background-image: url('./images/cloudy.jpg');
+}
+header{
+  display: none;
+}
+main {
+  min-height: 100vh;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
+  padding: 25px 25px 80px 25px;
+}
+.search-bar{
+  display: block;
+  width: 100%;
+  padding: 15px;
+
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 0px 0px 16px 16px;
+  margin-top: -25px;
+
+  box-shadow: 0px 5px rgba(0, 0, 0, 0.2);
+  
+  color: #313131;
+  font-size: 20px;
+
+  transition: 0.4s ease;
+}
+.search-bar:focus {
+  background-color: rgba(255, 255, 255, 0.75);
+}
+.search-box {
+    margin-bottom: 75px;
+    display: flex;
+}
+
+section {
+    color: #fff;
+    text-shadow: 2px 2px 2px rgb(0 0 0 / 75%);
+}
+
+.location-name {
+    text-align: center;
+    font-size: 44px;
+    padding: 22px 6px 0;
+    font-weight: 200;
+}
+
+.date-now {
+    text-align: center;
+    font-size: 22px;
+    font-weight: 200;
+}
+
+.weather-temp {
+    text-align: center;
+    font-size: 98px;
+    margin-top: 32px;
+    margin-bottom: 32px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    background: #ffffff4f;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 3px 3px 3px rgb(0 0 0 / 45%);
+    font-weight: 900;
+}
+
+.weather-box {
+    text-align: center;
+}
+
+.weather-sky {
+    text-transform: uppercase;
+    font-size: 22px;
+    padding: 12px 0;
+    font-weight: 200;
+}
+.search-box button {
+  background: none;
+  border: none;
+  outline: none;
+  background-color: rgb(255 255 255 / 50%);
+  border-radius: 0px 0px 16px 16px;
+  margin-top: -25px;
+  box-shadow: 0px 5px rgb(0 0 0 / 26%);
+  position: relative;
+  padding: 0 13px;
+  margin-left: 12px;
+}
+.menu-box {
+  border: none;
+  outline: none;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 16px 16px 0 0;
+  padding: 8px;
+  box-shadow: 0px -5px rgb(0 0 0 / 20%);
+  position: fixed;
+  bottom: 0;
+  left: 25px;
+  right: 25px;
+  z-index: 999;
+}
+
+.menu-box>button {
+  border: none;
+  background: no-repeat;
+  margin: 0 4px;
+  border-bottom: 2px solid transparent;
+  transition: 0.4s ease;
+}
+.menu-box>button.active {
+  border-bottom: 2px solid #00000080;
+  filter: drop-shadow(2px 4px 6px black);
+}
+.weather-item {
+  text-align: left;
+  font-weight: 700;
+}
+
+.weather-item>span {
+  font-weight: 200;
+  margin-right: 30px;
+  width: 100px;
+  display: inline-block;
 }
