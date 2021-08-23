@@ -127,11 +127,9 @@ function App() {
 
   function getAircondition(){
     var headers ={
-      'Access-Control-Allow-Origin': 'powietrze.gios.gov.pl',
+      'Access-Control-Allow-Origin': 'https://thirsty-mclean-dece24.netlify.app/',
     }
     fetch(airConditionApi, {
-        method : "GET",
-        mode: 'cors',
         headers: headers,
     })
     .then(response => response.json())
