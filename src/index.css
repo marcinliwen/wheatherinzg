@@ -155,3 +155,20 @@ section {
   width: 100px;
   display: inline-block;
 }
+.air-condition {
+  margin: 12px 0;
+  text-align: center;
+}
+
+.air-quantity {
+  padding: 6px 12px;
+  border-radius: 10px;
+  margin-left: 10px;
+  text-shadow: none;
+}
+.air-quantity.good {
+  background: #3ab13a;
+}
+.air-quantity.bad {
+  background: #f72121;
+}

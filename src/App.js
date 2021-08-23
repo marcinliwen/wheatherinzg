@@ -13,13 +13,19 @@ const weatherApi ={
 
 const airConditionApi = "https://api.gios.gov.pl/pjp-api/rest/aqindex/getIndex/387";
 
+const airApi = {
+  token : "930aff57c768491c4aac0803587f463fe2f01c9e",
+  url_base : "https://api.waqi.info/feed/",
+  location: 'zielona gora'
+}
 
 function App() {
   const [query, setQuery] = useState(LOCATION);
   const [weather, setWether] = useState([]);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  const [airCondition, setAirCondotion] = useState([])
+  const [airCondition, setAirCondotion] = useState([]);
+
 
   const search = evt =>{
     if(evt.key === "Enter"){
@@ -126,15 +132,17 @@ function App() {
   }
 
   function getAircondition(){
-    var headers ={
-      'Access-Control-Allow-Origin': 'https://thirsty-mclean-dece24.netlify.app/',
-    }
-    fetch(airConditionApi, {
-        headers: headers,
-    })
+    
+    fetch(`${airApi.url_base}${airApi.location}/?token=${airApi.token}`)
     .then(response => response.json())
-    .then(data => console.log(data));
+    .then(data => {
+      console.log(data);
+      setAirCondotion(data);
+    });
+
+    //console.log(airCondition.data.aqi);
   }
+
   return (
     <div className={(typeof weather[0] != "undefined") ? ((weather[0].clouds.all > 50) ? 'app cloudy' : 'app') : 'app'}>
       <main>
@@ -163,6 +171,7 @@ function App() {
               <div className="date-now">{dateBuilder(new Date())}</div>
             </div>
           </div>
+          <div className="air-condition"><span>jakość powietrza:</span> <span className={`air-quantity ${airCondition.data.aqi < 50 ?'good' : 'bad'}`}>{airCondition.data.aqi < 50 ?'Bardzo dobra' : 'Zła'}</span></div>
           <div>
             <div className="weather-box">
               <div className="weather-temp"> {Math.round(weather[0].main.temp)}°C</div>
