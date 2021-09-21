@@ -27,9 +27,7 @@ code {
 .app.cloudy{
   background-image: url('./images/cloudy.jpg');
 }
-header{
-  display: none;
-}
+
 main {
   min-height: 100vh;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.75));
@@ -84,7 +82,7 @@ section {
 
 .weather-temp {
     text-align: center;
-    font-size: 98px;
+    font-size: 54px;
     margin-top: 32px;
     margin-bottom: 32px;
     display: inline-block;
@@ -92,7 +90,7 @@ section {
     margin-right: auto;
     background: #ffffff4f;
     border-radius: 10px;
-    padding: 25px;
+    padding: 15px;
     box-shadow: 3px 3px 3px rgb(0 0 0 / 45%);
     font-weight: 900;
 }
@@ -120,6 +118,7 @@ section {
   margin-left: 12px;
 }
 .menu-box {
+  display: none;
   border: none;
   outline: none;
   background-color: rgba(255, 255, 255, 0.5);

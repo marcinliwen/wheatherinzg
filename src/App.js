@@ -20,12 +20,11 @@ const airApi = {
 }
 
 function App() {
-  const [query, setQuery] = useState(LOCATION);
+  const [query, setQuery] = useState('');
   const [weather, setWether] = useState([]);
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [airCondition, setAirCondotion] = useState([]);
-
 
   const search = evt =>{
     if(evt.key === "Enter"){
@@ -36,12 +35,13 @@ function App() {
       ])
       .then (data => {
         setWether(data);
-        //setQuery('Zielona Góra');
+        setQuery(locationName);
         console.log(data);
       })
       .catch((err) => {
         console.log(err);
       });
+      getAircondition(locationName);
     }
   }
 
@@ -86,16 +86,18 @@ function App() {
       }else{
         fetchFromLocation(latitude, longitude);
       } 
+      getAircondition(false, position.coords.latitude, position.coords.longitude);
     });
   }
   
   useEffect(()=>{
     console.log(latitude,longitude )
     if( latitude && longitude){
-      //fetchFromLocation(latitude, longitude);
+      fetchFromLocation(latitude, longitude);
+      getAircondition(false, latitude, longitude );
     }
-  getWeatherData();
-  getAircondition();
+    getWeatherData();
+    getAircondition('Zielona Góra');
   },[])
 
   const fetchFromLocation =(lat, lon)=>{
@@ -106,7 +108,7 @@ function App() {
       ])
       .then (data => {
         setWether(data);
-        setQuery('Zielona Góra');
+        //setQuery('Zielona Góra');
         console.log(data);
       })
       .catch((err) => {
@@ -131,9 +133,9 @@ function App() {
     document.getElementById(tab_id).classList.add('active')
   }
 
-  function getAircondition(){
-    
-    fetch(`${airApi.url_base}${airApi.location}/?token=${airApi.token}`)
+  function getAircondition(locationName,lat,lng){
+    const locationLink = locationName? locationName : 'geo:'+lat+';'+lng ;
+    fetch(`${airApi.url_base}${locationLink}/?token=${airApi.token}`)
     .then(response => response.json())
     .then(data => {
       console.log(data);
